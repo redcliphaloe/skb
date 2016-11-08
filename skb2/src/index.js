@@ -16,6 +16,21 @@ app.get('/task2A', (req, res) => {
   res.send(sum + '');
 });
 
+app.get('/task2B', (req, res) => {
+	let fullNameFormatted;
+	const fullNameParts = req.query.fullname.split(' ');
+	const fullNamePartsLength = fullNameParts.length;
+
+	if (fullNamePartsLength >= 1 && fullNamePartsLength <= 3) {
+		fullNameFormatted = fullNameParts[fullNamePartsLength - 1];
+		for (let i = 0; i <= fullNamePartsLength - 2; i++) {
+			fullNameFormatted += ' ' + fullNameParts[i][0] + '.';
+		}
+	}
+
+  res.send(fullNameFormatted || 'Invalid fullname');
+});
+
 app.listen(3000, () => {
   console.log('Your app listening on port 3000!');
 });
