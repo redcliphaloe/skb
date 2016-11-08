@@ -21,7 +21,7 @@ function formatFullName(fullName) {
 	// если имя не пустое
 	if (fullName) {
 		let re = /^\s|\d|_|\//g;
-		// если в имени нет начального пробела или цифр или подчеркивания
+		// если в имени нет начального пробела или цифр или подчеркивания или слеша
 		if (!~fullName.search(re)) {
 			const fullNameParts = fullName.split(' ');
 			const fullNamePartsLength = fullNameParts.length;
@@ -39,18 +39,6 @@ function formatFullName(fullName) {
 }
 
 app.get('/task2B', (req, res) => {
-	/*let fullNameFormatted;
-	const fullNameParts = req.query.fullname.split(' ');
-	const fullNamePartsLength = fullNameParts.length;
-
-	//if (fullNamePartsLength >= 1 && fullNamePartsLength <= 3) {
-	if (fullNameIsVallid()) {
-		fullNameFormatted = fullNameParts[fullNamePartsLength - 1];
-		for (let i = 0; i <= fullNamePartsLength - 2; i++) {
-			fullNameFormatted += ' ' + fullNameParts[i][0] + '.';
-		}
-	}*/
-
   res.send(formatFullName(req.query.fullname));
 });
 
