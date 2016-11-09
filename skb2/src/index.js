@@ -17,19 +17,20 @@ app.get('/task2A', (req, res) => {
 });
 
 function formatFullName(fullName) {
-	let fullNameFormatted = '';	
+	let fullNameFormatted = '';		
 	// если имя не пустое
 	if (fullName) {
-		let re = /^\s|\d|_|\//g;
-		// если в имени нет начального пробела или цифр или подчеркивания или слеша
-		if (!~fullName.search(re)) {
-			const fullNameParts = fullName.split(' ');
+		let re = /\d|_|\//g; 
+		// если в имени нет цифр или подчеркивания или слеша
+		if (!~fullName.search(re)) { 
+			const fullNameParts = fullName.trim().split(/\s+/); // массив без пустых элементов 
 			const fullNamePartsLength = fullNameParts.length;
 			// если имя больше ноля и меньше четырех слов
 			if (fullNamePartsLength > 0 && fullNamePartsLength < 4) {
-				fullNameFormatted = fullNameParts[fullNamePartsLength - 1];
+				fullNameFormatted = fullNameParts[fullNamePartsLength - 1].toLowerCase(); // все буквы в нижнем регистре
+				fullNameFormatted = fullNameFormatted[0].toUpperCase() + fullNameFormatted.slice(1); // а первая в верхнем
 				for (let i = 0; i <= fullNamePartsLength - 2; i++) {
-					fullNameFormatted += ' ' + fullNameParts[i][0] + '.';
+					fullNameFormatted += ' ' + fullNameParts[i][0].toUpperCase() + '.'; // буквы в верхнем регистре
 				}
 			}
 		}
