@@ -20,7 +20,7 @@ function formatFullName(fullName) {
 	let fullNameFormatted = '';		
 	// если имя не пустое
 	if (fullName) {
-		let re = /\d|_|\//g; 
+		const re = /\d|_|\//g; 
 		// если в имени нет цифр или подчеркивания или слеша
 		if (!~fullName.search(re)) { 
 			const fullNameParts = fullName.trim().split(/\s+/); // массив без пустых элементов 
