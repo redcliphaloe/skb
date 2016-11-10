@@ -37,9 +37,24 @@ app.get('/task2B', (req, res) => {
 	res.send(formatFullname(req.query.fullname));
 });
 
-function usernameFromURL(url) {
+function usernameFromURL_(url) {
 	return url[0] === '@' ? url : '@' + url.slice(url.lastIndexOf('/') + 1);	
 }
+
+function usernameFromURL(url) {
+	let username = '';
+	const indexOfDot = url.indexOf('.');
+
+	if (~indexOfDot) {
+		const firstIndexOfSlash = url.indexOf('/', indexOfDot);
+		const secondIndexOfSlash = url.indexOf('/', firstIndexOfSlash + 1);
+		username = url.slice(firstIndexOfSlash + 1, ~secondIndexOfSlash ? secondIndexOfSlash : url.length);
+	} else {
+		username = url;
+	}		
+
+	return username[0] === '@' ? username : '@' + username;
+} 
 
 app.get('/task2C', (req, res) => {
 	res.send(usernameFromURL(req.query.username));
