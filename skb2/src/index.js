@@ -37,10 +37,6 @@ app.get('/task2B', (req, res) => {
 	res.send(formatFullname(req.query.fullname));
 });
 
-function usernameFromURL_(url) {
-	return url[0] === '@' ? url : '@' + url.slice(url.lastIndexOf('/') + 1);	
-}
-
 function usernameFromURL(url) {
 	let username = '';
 	const indexOfDot = url.indexOf('.');
