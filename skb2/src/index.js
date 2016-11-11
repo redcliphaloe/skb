@@ -42,9 +42,11 @@ function usernameFromURL(url) {
 	const indexOfDot = url.indexOf('.');
 
 	if (~indexOfDot) {
-		const firstIndexOfSlash = url.indexOf('/', indexOfDot);
-		const secondIndexOfSlash = url.indexOf('/', firstIndexOfSlash + 1);
-		username = url.slice(firstIndexOfSlash + 1, ~secondIndexOfSlash ? secondIndexOfSlash : url.length);
+		const firstIndexOfDelimiter = url.indexOf('/', indexOfDot);
+		let secondIndexOfDelimiter = url.indexOf('/', firstIndexOfDelimiter + 1);
+		secondIndexOfDelimiter = ~secondIndexOfDelimiter ? secondIndexOfDelimiter : url.indexOf('?', firstIndexOfDelimiter + 1);
+		secondIndexOfDelimiter = ~secondIndexOfDelimiter ? secondIndexOfDelimiter : url.length;
+		username = url.slice(firstIndexOfDelimiter + 1, secondIndexOfDelimiter);
 	} else {
 		username = url;
 	}		
