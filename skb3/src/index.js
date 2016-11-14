@@ -35,7 +35,7 @@ app.get('/task3A/volumes', (req, res) => {
 	}
 
 	for (let p in dataFound) {
-		dataFound[p] = dataFound[p] + 'B';
+		dataFound[p] += 'B';
 	}
 
 	hdd.length > 0 ? res.json(dataFound) : res.sendStatus(404);
