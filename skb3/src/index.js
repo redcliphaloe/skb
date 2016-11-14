@@ -18,10 +18,6 @@ fetch(pcUrl)
     console.log('Что-то пошло не так:', err);
   });
 
-const errorNotFound = {
-	"404": "Not Found"
-}
-
 app.get('/task3A', (req, res) => {
 	res.json(pc);  
 });
@@ -43,7 +39,6 @@ app.get('/task3A/volumes', (req, res) => {
 	}
 
 	hdd.length > 0 ? res.json(dataFound) : res.sendStatus(404);
-	//res.json(hdd.length > 0 ? dataFound : errorNotFound);
 });
 
 app.get('/task3A/:key', (req, res) => {
