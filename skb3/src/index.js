@@ -45,9 +45,7 @@ app.get('/task3A/:key', (req, res) => {
 	let dataFound;
 
 	try {
-		if (req.params.value != 'length') {
-			dataFound = pc[req.params.key];
-		}		
+		dataFound = pc[req.params.key];
 	} finally {
 		dataFound !== undefined ? res.json(dataFound) : res.sendStatus(404);
 	}
