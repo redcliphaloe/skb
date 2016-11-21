@@ -167,7 +167,7 @@ function rgbToHex(r, g, b) {
 	return result;
 }
 
-function rgbStringtoHex(rgbString) {
+function rgbStringToHex(rgbString) {
 	let result = 'Invalid color';
 
 	rgbString.replace(/rgb\((-?\d+),(-?\d+),(-?\d+)\)/, function (rgbString, r, g, b) {
@@ -185,7 +185,7 @@ function colorToHexFromQuery(query) {
 	let result = query.color.replace(/ |%20/g, '').toLowerCase();
 
 	if (result.indexOf('rgb') == 0) {
-		result = rgbStringtoHex(result);
+		result = rgbStringToHex(result);
 	}
 
 	if (result.indexOf('hsl') == 0) {
